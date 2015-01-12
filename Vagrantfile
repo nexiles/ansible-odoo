@@ -10,8 +10,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       odoo.vm.box = "ubuntu/trusty64"
       odoo.vm.host_name = NAME
 
-      odoo.vm.synced_folder "~/develop/nexiles/odoo", "/opt/odoo"
-      odoo.vm.synced_folder "../addons", "/opt/odoo/.local/share/Odoo/addons/8.0"
+      odoo.vm.synced_folder "~/develop/nexiles/odoo", "/opt/odoo", id: "vagrant-root",
+        owner: "openerp",
+        group: "openerp",
+        mount_options: ["dmode=775,fmode=664"]
+
+      odoo.vm.synced_folder "../addons", "/opt/odoo/.local/share/Odoo/addons/8.0", id: "vagrant-root",
+        owner: "openerp",
+        group: "openerp",
+        mount_options: ["dmode=775,fmode=664"]
+
       odoo.vm.network :private_network, ip: "192.168.33.2"
       odoo.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--memory", "2048"]
