@@ -24,7 +24,7 @@ set -e
 
 do_start () {
     echo -n "Starting ${DESC}: "
-    start-stop-daemon --start --quiet --pidfile /var/run/${NAME}.pid --chuid ${USER} --background --make-pidfile --exec ${DAEMON} -- --config=${CONFIG} --logfile=${LOGFILE}
+    start-stop-daemon --start --quiet --pidfile /var/run/${NAME}.pid --chuid ${USER} --background --make-pidfile --exec ${DAEMON} -- --config=${CONFIG} --logfile=${LOGFILE} -u all
     echo "${NAME}."
 }
 
