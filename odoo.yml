@@ -7,5 +7,5 @@
     vars:
     - aptproxy: False
     - run_git_clone: False
-    - server_name: odoo-dev.nexiles.com
+    - server_name: odoo-dev.nexiles.local
     - proxy_pass: http://localhost:8069;
