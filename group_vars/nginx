@@ -1,2 +1,2 @@
-server_name: catmenel.com.ve
+server_name: odoo-dev.nexiles.com
 proxy_pass: http://localhost:8069;

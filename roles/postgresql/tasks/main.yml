@@ -3,10 +3,10 @@
 
  - name: apt-key postgres
    apt_key: file=/etc/apt/postgres.asc state=present
-   
+
  - name: Add postgresql repository
    apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main' state=present update_cache=yes
-   
+
  - name: Install postgresql server
    apt: name=postgresql-9.3 state=present
 
@@ -14,4 +14,4 @@
    postgresql_user: name={{ odoo_user }} role_attr_flags=SUPERUSER state=present
    sudo: yes
    sudo_user: postgres
-         
+

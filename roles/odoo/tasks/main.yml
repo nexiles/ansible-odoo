@@ -2,12 +2,12 @@
    git: repo=https://github.com/odoo/odoo.git
         dest=/opt/odoo
         version=8.0
-        depth=1 
+        depth=1
    when: run_git_clone
-        
+
  - name: Odoo system group
-   group: system=yes state=present name={{ odoo_user }} 
-   
+   group: system=yes state=present name={{ odoo_user }}
+
  - name: Odoo system user
    user: system=yes state=present shell=/bin/false home=/home/odoo name={{ odoo_user }}
 
@@ -19,13 +19,13 @@
 
  - name: Odoo etc directory
    file: path={{ odoo_etc_path }} owner={{ odoo_user }} group={{ odoo_user }} mode=0744 state=directory
-   
+
  - name: Odoo config file
    copy: src=openerp-server.conf dest={{ odoo_etc_path }} owner={{ odoo_user }} group={{ odoo_user }}  mode=0640
 
  - name: Odoo log directory
    file: path={{ odoo_log_path }} owner={{ odoo_user }} group={{ odoo_user }} mode=0744 state=directory
-       
+
  - name: Installs odoo dependencies via debian
    apt: name={{ item }} state=present
    with_items:

@@ -4,3 +4,8 @@
       - postgresql
       - odoo
       - nginx
+    vars:
+    - aptproxy: False
+    - run_git_clone: False
+    - server_name: odoo-dev.nexiles.com
+    - proxy_pass: http://localhost:8069;
